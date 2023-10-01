@@ -1,8 +1,9 @@
 import 'package:food_order/src/features/pages/welcome_page/second_page.dart';
 import 'package:food_order/src/features/pages/welcome_page/first_page.dart';
 import 'package:food_order/src/features/pages/welcome_page/third_page.dart';
-import 'package:food_order/src/common/styles/app_colors.dart';
 import 'package:flutter/material.dart';
+
+import '../location_page/location_view.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -13,50 +14,59 @@ class WelcomePage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const SizedBox(),
-          Stack(
-            children: [
-              SizedBox(
-                width: 300,
-                height: 200,
-                child: ColoredBox(color: Colors.blueAccent),
+          Padding(
+            padding: const EdgeInsets.only(top: 100),
+            child: Stack(children: [
+              // const Positioned(
+              //   top: -40,
+              //   right: 40,
+              //   child: Opacity(
+              //     opacity: 0.6,
+              //     child: Image(
+              //       width: 310,
+              //       height: 310,
+              //       image: AssetImage("assets/images/jahongir3.png"),
+              //     ),
+              //   ),
+              // ),
+              Padding(
+                padding: const EdgeInsets.only(top: 120),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 500,
+                  child: PageView(
+                    children: const [
+                      FirstPage(),
+                      SecondPage(),
+                      ThirdPage(),
+                    ],
+                  ),
+                ),
               ),
-              PageView(
-                children: [
-                  FirstPage(),
-                  SecondPage(),
-                  ThirdPage(),
-                ],
-              ),
-            ],
+            ]),
           ),
           Padding(
-            padding: const EdgeInsets.only(
-              bottom: 15,
-              left: 20,
-              right: 20,
-            ),
-            child: InkWell(
-              onTap: () {},
-              child: const SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: AppColors.purple,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(30),
+            padding: const EdgeInsets.only(bottom: 30, right: 20, left: 20),
+            child: SizedBox(
+              width: double.infinity,
+              height: 60,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (value) => const LocationView(),
                     ),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "Davom etish",
-                      style: TextStyle(
-                        color: AppColors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                      ),
-                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.deepPurple,
+                ),
+                child: const Text(
+                  "Продолжить",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
                   ),
                 ),
               ),

@@ -7,8 +7,23 @@ class ThirdPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.asset('assets/images/cards.png'),
-        const Text("third"),
+        Image.asset(
+          'assets/images/cards.png',
+          width: 300,
+          height: 300,
+        ),
+        const Padding(
+          padding: EdgeInsets.only(left: 30, right: 30),
+          child: Text(
+            "Принимаем карты Uzcard, Humo, Visa, Mastercard",
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        )
       ],
     );
   }
